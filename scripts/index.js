@@ -30,7 +30,7 @@ let A = 2.94, E = 1, EAF_II = 1, SCED = 1, PMns = 1;
 function getSize() {
     Size = document.getElementById('input_size');
     choiseType();
-    showII();
+    choiseA();
 }
 
 // COCOMO Base and Intermediate
