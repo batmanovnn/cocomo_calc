@@ -1,30 +1,21 @@
 // Header menu
-
-function dropFunction() {
-    document.getElementById("myDropdown").classList.toggle("show");
+function info_btn_click(){
+    let element = document.getElementById("info_block");
+    let valueVis = window.getComputedStyle(element).visibility;
+    console.log(valueVis);
+    if(valueVis == "visible"){document.getElementById('info_block').style.visibility = "hidden"}
+    else {document.getElementById('info_block').style.visibility = "visible"}
 }
-
-window.onclick = function (event) {
-    if (!event.target.matches('.dropbtn')) {
-        var dropdowns = document.getElementsByClassName("dropdown-content");
-        var i;
-        for (i = 0; i < dropdowns.length; i++) {
-            var openDropdown = dropdowns[i];
-            if (openDropdown.classList.contains('show')) {
-                openDropdown.classList.remove('show');
-            }
-        }
-    }
-};
-
-///////////     Calculation section     //////////
 
 // Global variables
 let Size;
 
 //Geting parametr Size
 function getSize() {
-    Size = Number(document.getElementById('input_size').value);
+    let buff = parseInt(document.getElementById('input_size').value);
+    if (buff > 100){Size = 100}
+    else if (buff < 2) {Size = 2}
+    else{Size = buff}
     choiseType();
     choiseA();
 }

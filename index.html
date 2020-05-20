@@ -4,6 +4,10 @@
 
     <!--  Meta  -->
     <meta charset="UTF-8" />
+    <meta name="author" content="BatmanovNN">
+    <meta name = "description" content = "The application makes calculations to assess the complexity software
+ product development." >
+
     <title>COCOMO</title>
 
     <!--  Styles  -->
@@ -12,23 +16,39 @@
 </head>
 
 <body>
+<header >
+    <div class = "button-container">
+        <a href="#1">Basic</a>
+        <a href="#2">Intermediate</a>
+        <a href="#3">COCOMO II</a>
 
-<header>
+        <span id="empty"></span>
 
-    <div class = "dropdown">
-        <button onclick = "dropFunction()" class = "dropbtn">
-            Меню
-        </button>
-        <div id = "myDropdown" class = "dropdown-content">
-            <a href = "#1">Базовый уровень (Basic COCOMO)</a>
-            <a href = "#2">Промежуточный уровень (Intermediate COCOMO)</a>
-            <a href = "#3">COCOMO II</a>
-        </div>
+        <span class="table_note">Введите объем программного продукта:
+        <input type="number" min="2" max="100" size="6" autofocus id="input_size" value="2" oninput="getSize()">
+             тыс. строк кода
+        </span>
+
+        <input type="button" class="info_btn" value="Info" onclick="info_btn_click()">
     </div>
 </header>
 
-<!-- OUTPUT FORM -->
+<!-- Info -->
+<div id="info_block">
+    <table class="table_dark">
+        <tr>
+           <th>
+               <p>ТУСУР</p>
+               <p>Лабораторная работа</p>
+               <p>по предмету "Программная инженерия"</p>
+               <p>студент группы з-96Э</p>
+               <p><a href="mailto:batmanovnn@gmail.com">Батманов Н.Н.</a></p>
+           </th>
+        </tr>
+    </table>
+</div>
 
+<!-- OUTPUT FORM -->
 <div class="result">
     <table class="table_dark">
         <tr>
@@ -59,402 +79,424 @@
     </table>
 </div>
 
-    <!-- Input form -->
-<div id="basic">
-    <p><a name="1"></a></p>
-    <div> <br><br><br></div>
+<div class="content">
+    <!-- Basic COCOMO -->
+    <div id="basic">
 
-    <div>
-        <h3> Введите объем программного продукта в тысячах строк исходного текста:</h3>
-        <input type="number" min="2" max="100" id="input_size" value="2" oninput="getSize()"><snap> тыс. строк.</snap>
+        <a name="1"></a>
+        <div id="empty"></div>
+
+        <p><h3>Базовый уровень (Basic COCOMO)</h3></p>
+        <p>Модель этого уровня – двухпараметрическая.
+            В качестве параметров выступают тип проекта и объем программы (число строк кода).
+        </p>
+        <p>Модель этого уровня подходит для ранней быстрой приблизительной
+            оценки затрат, но точность её весьма низка, т.к. не учитываются такие факторы,
+            как квалификация персонала, характеристики оборудования, опыт применения
+            современных методов разработки программного обеспечения и современных
+            инструментальных сред разработки и др.</p>
     </div>
 
-    <!-- Basic COCOMO -->
-    <p>#1</p>
-    <h3><p>Базовый уровень (Basic COCOMO)</p></h3>
-    <p>Модель этого уровня – двухпараметрическая.
-        В качестве параметров выступают тип проекта и объем программы (число строк кода).
-    </p>
-
-    <form>
-        <h3> Выберите тип проекта для расчета калькулятором COCOMO:</h3>
-        <input type="range" min="1" max="3" id="input_type" oninput="choiseType()"><snap id="type_text"></snap>
-    </form>
-</div>
-
     <!-- Intermediate COCOMO -->
-<div id="inter">
     <p><a name="2"></a></p>
-    <p>#2</p>
-    <p>Промежуточный уровень (Intermediate COCOMO)</p>
-    <form>
-        <table class="table_dark">
-            <colgroup>
-                <col width="70%"/>
-                <col width="15%"/>
-                <col width="15%"/>
-            </colgroup>
-            <tr class="head">
-                <td rowspan="2">Атрибуты стоимости, CD k</td>
-                <td colspan="2"> Рейтинг</td>
-            </tr>
-            <tr class="head">
-                <td>уровень</td>
-                <td>коэффициент</td>
-            </tr>
-            <tr class="head">
-                <td colspan="3">Характеристики продукта</td>
-            </tr>
-            <tr>
-                <td class="table_fist_col">1. Требуемая надежность ПО</td>
-                <td><input type="range" min="1" max="6" value="3" id="input_i1" oninput="changeEAF_int()"></td>
-                <td ><snap id="i1_text"></snap></td>
-            </tr>
-            <tr>
-                <td class="table_fist_col">2. Размер БД приложения</td>
-                <td><input type="range" min="1" max="6" value="3" id="input_i2" oninput="changeEAF_int()"></td>
-                <td ><snap id="i2_text"></snap></td>
-            </tr>
-            <tr>
-                <td class="table_fist_col">3. Сложность продукта</td>
-                <td><input type="range" min="1" max="6" value="3" id="input_i3" oninput="changeEAF_int()"></td>
-                <td ><snap id="i3_text"></snap></td>
-            </tr>
-            <tr class="head">
-                <td colspan="3">Характеристики аппаратного обеспечения</td>
-            </tr>
-            <tr>
-                <td class="table_fist_col">4. Ограничения быстродействия при выполнении программы</td>
-                <td><input type="range" min="1" max="6" value="3" id="input_i4" oninput="changeEAF_int()"></td>
-                <td ><snap id="i4_text"></snap></td>
-            </tr>
-            <tr>
-                <td class="table_fist_col">5. Ограничения памяти</td>
-                <td><input type="range" min="1" max="6" value="3" id="input_i5" oninput="changeEAF_int()"></td>
-                <td ><snap id="i5_text"></snap></td>
-            </tr>
-            <tr>
-                <td class="table_fist_col">6. Неустойчивость окружения виртуальной машины</td>
-                <td><input type="range" min="1" max="6" value="3" id="input_i6" oninput="changeEAF_int()"></td>
-                <td ><snap id="i6_text"></snap></td>
-            </tr>
-            <tr>
-                <td class="table_fist_col">7. Требуемое время восстановления</td>
-                <td><input type="range" min="1" max="6" value="3" id="input_i7" oninput="changeEAF_int()"></td>
-                <td ><snap id="i7_text"></snap></td>
-            </tr>
-            <tr class="head">
-                <td colspan="3">Характеристики персонала</td>
-            </tr>
-            <tr>
-                <td class="table_fist_col">8. Аналитические способности</td>
-                <td><input type="range" min="1" max="6" value="3" id="input_i8" oninput="changeEAF_int()"></td>
-                <td ><snap id="i8_text"></snap></td>
-            </tr>
-            <tr>
-                <td class="table_fist_col">9. Опыт разработки</td>
-                <td><input type="range" min="1" max="6" value="3" id="input_i9" oninput="changeEAF_int()"></td>
-                <td ><snap id="i9_text"></snap></td>
-            </tr>
-            <tr>
-                <td class="table_fist_col">10. Способности к разработке ПО</td>
-                <td><input type="range" min="1" max="6" value="3" id="input_i10" oninput="changeEAF_int()"></td>
-                <td ><snap id="i10_text"></snap></td>
-            </tr>
-            <tr>
-                <td class="table_fist_col">11. Опыт использования виртуальных машин</td>
-                <td><input type="range" min="1" max="6" value="3" id="input_i11" oninput="changeEAF_int()"></td>
-                <td ><snap id="i11_text"></snap></td>
-            </tr>
-            <tr>
-                <td class="table_fist_col">12. Опыт разработки на языках программирования</td>
-                <td><input type="range" min="1" max="6" value="3" id="input_i12" oninput="changeEAF_int()"></td>
-                <td ><snap id="i12_text"></snap></td>
-            </tr>
-            <tr>
-                <td colspan="3">Характеристики проекта</td>
-            </tr>
-            <tr>
-                <td class="table_fist_col">13. Применение методов разработки ПО</td>
-                <td><input type="range" min="1" max="6" value="3" id="input_i13" oninput="choiseA()"></td>
-                <td ><snap id="i13_text"></snap></td>
-            </tr>
-            <tr>
-                <td class="table_fist_col">14. Использование инструментария разработки ПО</td>
-                <td><input type="range" min="1" max="6" value="3" id="input_i14" oninput="changeEAF_int()"></td>
-                <td ><snap id="i14_text"></snap></td>
-            </tr>
-            <tr>
-                <td class="table_fist_col">15. Требования соблюдения графика разработки</td>
-                <td><input type="range" min="1" max="6" value="3" id="input_i15" oninput="changeEAF_int()"></td>
-                <td ><snap id="i15_text"></snap></td>
-            </tr>
-        </table>
-    </form>
-</div>
+    <div id="empty"></div>
 
-<!-- COCOMO II -->
-<div>
-    <p><a name="3"></a></p>
-    <p>#3</p>
-    <p>COCOMO II</p>
+    <!-- Calculation method switching form for COCOMO -->
+    <span>
+        <h4>Тип проекта:
+        <input type="range" min="1" max="3" id="input_type" oninput="choiseType()"><snap id="type_text"></snap>
+        </h4>
+    </span>
 
-    <h3> Выберите тип проекта для расчета калькулятором COCOMO:</h3>
-    <input type="range" min="1" max="2" value="1" id="input_A" oninput="choiseA()"><snap id="A_text"></snap>
+    <div id="inter">
+        <div id="empty"></div>
+        <p><h3>Промежуточный уровень (Intermediate COCOMO)</h3></p>
+        <p>На этом уровне базовая модель уточнена за счет ввода дополнительных 15
+            «атрибутов стоимости» (или факторов затрат) Cost Drivers (CD k ), которые
+            сгруппированы по четырем категориям в таблице:</p>
+        <form>
+            <table class="table_dark">
+                <colgroup>
+                    <col width="70%"/>
+                    <col width="15%"/>
+                    <col width="15%"/>
+                </colgroup>
+                <tr class="head">
+                    <td rowspan="2">Атрибуты стоимости, CD k</td>
+                    <td colspan="2"> Рейтинг</td>
+                </tr>
+                <tr class="head">
+                    <td>уровень</td>
+                    <td>коэффициент</td>
+                </tr>
+                <tr class="head">
+                    <td colspan="3">Характеристики продукта</td>
+                </tr>
+                <tr>
+                    <td class="table_fist_col">1. Требуемая надежность ПО</td>
+                    <td><input type="range" min="1" max="6" value="3" id="input_i1" oninput="changeEAF_int()"></td>
+                    <td ><snap id="i1_text"></snap></td>
+                </tr>
+                <tr>
+                    <td class="table_fist_col">2. Размер БД приложения</td>
+                    <td><input type="range" min="1" max="6" value="3" id="input_i2" oninput="changeEAF_int()"></td>
+                    <td ><snap id="i2_text"></snap></td>
+                </tr>
+                <tr>
+                    <td class="table_fist_col">3. Сложность продукта</td>
+                    <td><input type="range" min="1" max="6" value="3" id="input_i3" oninput="changeEAF_int()"></td>
+                    <td ><snap id="i3_text"></snap></td>
+                </tr>
+                <tr class="head">
+                    <td colspan="3">Характеристики аппаратного обеспечения</td>
+                </tr>
+                <tr>
+                    <td class="table_fist_col">4. Ограничения быстродействия при выполнении программы</td>
+                    <td><input type="range" min="1" max="6" value="3" id="input_i4" oninput="changeEAF_int()"></td>
+                    <td ><snap id="i4_text"></snap></td>
+                </tr>
+                <tr>
+                    <td class="table_fist_col">5. Ограничения памяти</td>
+                    <td><input type="range" min="1" max="6" value="3" id="input_i5" oninput="changeEAF_int()"></td>
+                    <td ><snap id="i5_text"></snap></td>
+                </tr>
+                <tr>
+                    <td class="table_fist_col">6. Неустойчивость окружения виртуальной машины</td>
+                    <td><input type="range" min="1" max="6" value="3" id="input_i6" oninput="changeEAF_int()"></td>
+                    <td ><snap id="i6_text"></snap></td>
+                </tr>
+                <tr>
+                    <td class="table_fist_col">7. Требуемое время восстановления</td>
+                    <td><input type="range" min="1" max="6" value="3" id="input_i7" oninput="changeEAF_int()"></td>
+                    <td ><snap id="i7_text"></snap></td>
+                </tr>
+                <tr class="head">
+                    <td colspan="3">Характеристики персонала</td>
+                </tr>
+                <tr>
+                    <td class="table_fist_col">8. Аналитические способности</td>
+                    <td><input type="range" min="1" max="6" value="3" id="input_i8" oninput="changeEAF_int()"></td>
+                    <td ><snap id="i8_text"></snap></td>
+                </tr>
+                <tr>
+                    <td class="table_fist_col">9. Опыт разработки</td>
+                    <td><input type="range" min="1" max="6" value="3" id="input_i9" oninput="changeEAF_int()"></td>
+                    <td ><snap id="i9_text"></snap></td>
+                </tr>
+                <tr>
+                    <td class="table_fist_col">10. Способности к разработке ПО</td>
+                    <td><input type="range" min="1" max="6" value="3" id="input_i10" oninput="changeEAF_int()"></td>
+                    <td ><snap id="i10_text"></snap></td>
+                </tr>
+                <tr>
+                    <td class="table_fist_col">11. Опыт использования виртуальных машин</td>
+                    <td><input type="range" min="1" max="6" value="3" id="input_i11" oninput="changeEAF_int()"></td>
+                    <td ><snap id="i11_text"></snap></td>
+                </tr>
+                <tr>
+                    <td class="table_fist_col">12. Опыт разработки на языках программирования</td>
+                    <td><input type="range" min="1" max="6" value="3" id="input_i12" oninput="changeEAF_int()"></td>
+                    <td ><snap id="i12_text"></snap></td>
+                </tr>
+                <tr>
+                    <td colspan="3">Характеристики проекта</td>
+                </tr>
+                <tr>
+                    <td class="table_fist_col">13. Применение методов разработки ПО</td>
+                    <td><input type="range" min="1" max="6" value="3" id="input_i13" oninput="choiseA()"></td>
+                    <td ><snap id="i13_text"></snap></td>
+                </tr>
+                <tr>
+                    <td class="table_fist_col">14. Использование инструментария разработки ПО</td>
+                    <td><input type="range" min="1" max="6" value="3" id="input_i14" oninput="changeEAF_int()"></td>
+                    <td ><snap id="i14_text"></snap></td>
+                </tr>
+                <tr>
+                    <td class="table_fist_col">15. Требования соблюдения графика разработки</td>
+                    <td><input type="range" min="1" max="6" value="3" id="input_i15" oninput="changeEAF_int()"></td>
+                    <td ><snap id="i15_text"></snap></td>
+                </tr>
+            </table>
+        </form>
+    </div>
 
-    <!-- Table 2.5 -->
-    <form id="SFi">
-        <table class="table_dark">
-            <colgroup>
-                <col width="15%"/>
-                <col width="30%"/>
-                <col width="20%"/>
-                <col width="35%"/>
-            </colgroup>
-            <tr class="head">
-                <td rowspan="2">SFi</td>
-                <td rowspan="2">Описание</td>
-                <td colspan="2">Уровень значимости фактора</td>
-            </tr>
-            <tr></tr>
+    <!-- COCOMO II -->
+    <div>
+        <p><a name="3"></a></p>
+        <div id="empty"></div>
 
-            <tr>
-                <td class="table_fist_col"> 1. PREC. Precedentedness</td>
-                <td class="table_fist_col">Прецедентность, наличие опыта аналогичных разработок</td>
-                <td><snap id="SF_1_output"></snap>
-                    <input type="range" min="1" max="6" value="3" id="input_SF_1" oninput="choiseA()"></td>
-                <td><snap id="SF_1_output_note"></snap></td>
-            </tr>
+        <p><h3>COCOMO II</h3></p>
+        <p>В 1997 методика была усовершенствована и получила название
+            COCOMO II. Калибровка параметров производилась уже по 161 проекту разработки ПО.
+            Различаются две стадии оценки проекта: предварительная оценка на
+            начальной фазе (Early Design) и детальная оценка после проработки архитектуры
+            (Post Architecture).</p>
 
-            <tr>
-                <td class="table_fist_col">2. FLEX. Development Flexibility</td>
-                <td class="table_fist_col">Гибкость процесса разработки</td>
-                <td><snap id="SF_2_output"></snap>
-                    <input type="range" min="1" max="6" value="3" id="input_SF_2" oninput="choiseA()"></td>
-                <td><snap id="SF_2_output_note"></snap></td>
-            </tr>
+        <h4> Тип проекта:
+        <input type="range" min="1" max="2" value="1" id="input_A" oninput="choiseA()"><span id="A_text"></span>
+        </h4>
 
-            <tr>
-                <td class="table_fist_col">3. RESL. Architecture / Risk Resolution</td>
-                <td class="table_fist_col">Архитектура и разрешение рисков</td>
-                <td><snap id="SF_3_output"></snap>
-                    <input type="range" min="1" max="6" value="3" id="input_SF_3" oninput="choiseA()"></td>
-                <td><snap id="SF_3_output_note"></snap></td>
-            </tr>
+        <!-- Table 2.5 -->
+        <p>В методике COCOMO II используются пять факторов масштаба (Scale Factors),
+            описание которых приведено в таблице:
+        </p>
+        <form id="SFi">
+            <table class="table_dark">
+                <colgroup>
+                    <col width="15%"/>
+                    <col width="30%"/>
+                    <col width="20%"/>
+                    <col width="35%"/>
+                </colgroup>
+                <tr class="head">
+                    <td rowspan="2">SFi</td>
+                    <td rowspan="2">Описание</td>
+                    <td colspan="2">Уровень значимости фактора</td>
+                </tr>
+                <tr></tr>
 
-            <tr>
-                <td class="table_fist_col">4. TEAM. Team Cohesion</td>
-                <td class="table_fist_col">Сработанность команды</td>
-                <td><snap id="SF_4_output"></snap>
-                    <input type="range" min="1" max="6" value="3" id="input_SF_4" oninput="choiseA()"></td>
-                <td><snap id="SF_4_output_note"></snap></td>
-            </tr>
+                <tr>
+                    <td class="table_fist_col"> 1. PREC. Precedentedness</td>
+                    <td class="table_fist_col">Прецедентность, наличие опыта аналогичных разработок</td>
+                    <td><snap id="SF_1_output"></snap>
+                        <input type="range" min="1" max="6" value="3" id="input_SF_1" oninput="choiseA()"></td>
+                    <td><snap id="SF_1_output_note"></snap></td>
+                </tr>
 
-            <tr>
-                <td class="table_fist_col">5. PMAT. Process Maturity</td>
-                <td class="table_fist_col">Зрелость процессов</td>
-                <td><snap id="SF_5_output"></snap>
-                    <input type="range" min="1" max="6" value="3" id="input_SF_5" oninput="choiseA()"></td>
-                <td><snap id="SF_5_output_note"></snap></td>
+                <tr>
+                    <td class="table_fist_col">2. FLEX. Development Flexibility</td>
+                    <td class="table_fist_col">Гибкость процесса разработки</td>
+                    <td><snap id="SF_2_output"></snap>
+                        <input type="range" min="1" max="6" value="3" id="input_SF_2" oninput="choiseA()"></td>
+                    <td><snap id="SF_2_output_note"></snap></td>
+                </tr>
 
-            </tr>
+                <tr>
+                    <td class="table_fist_col">3. RESL. Architecture / Risk Resolution</td>
+                    <td class="table_fist_col">Архитектура и разрешение рисков</td>
+                    <td><snap id="SF_3_output"></snap>
+                        <input type="range" min="1" max="6" value="3" id="input_SF_3" oninput="choiseA()"></td>
+                    <td><snap id="SF_3_output_note"></snap></td>
+                </tr>
 
-            <tr>
-                <td class="table_fist_col" colspan="4">
-            <span class="table_note">СММ (Capability Maturity Model) — пятиуровневая модель зрелости
-                возможностей компании-разработчика ПО, предложенная SEI (Software Engineering Institute, США).</span>
-                </td>
-            </tr>
-            <tr>
-                <td class="table_fist_col" colspan="4">
-            <span class="table_note">Ad hoc (лат. «для этого»). Решение, предназначенное для конкретной задачи
-                или задачи, не обобщаемое и не предназначаемое для адаптации к другим целям.</span>
-                </td>
-            </tr>
+                <tr>
+                    <td class="table_fist_col">4. TEAM. Team Cohesion</td>
+                    <td class="table_fist_col">Сработанность команды</td>
+                    <td><snap id="SF_4_output"></snap>
+                        <input type="range" min="1" max="6" value="3" id="input_SF_4" oninput="choiseA()"></td>
+                    <td><snap id="SF_4_output_note"></snap></td>
+                </tr>
 
-        </table>
-    </form>
+                <tr>
+                    <td class="table_fist_col">5. PMAT. Process Maturity</td>
+                    <td class="table_fist_col">Зрелость процессов</td>
+                    <td><snap id="SF_5_output"></snap>
+                        <input type="range" min="1" max="6" value="3" id="input_SF_5" oninput="choiseA()"></td>
+                    <td><snap id="SF_5_output_note"></snap></td>
 
-    <!-- Table 2.6 -->
-    <form id="EAF_II_p">
-        <table class="table_dark">
-            <colgroup>
-                <col width="20%"/>
-                <col width="40%"/>
-                <col width="20%"/>
-                <col width="20%"/>
-            </colgroup>
-            <tr class="head">
-                <td rowspan="2" colspan="2">Множитель трудоёмкости, EMi</td>
-                <td colspan="2"> Рейтинг</td>
-            </tr>
-            <tr class="head">
-                <td>уровень</td>
-                <td>коэффициент</td>
-            </tr>
-            <tr class="head">
-                <td colspan="4">Параметры персонала</td>
-            </tr>
-            <tr>
-                <td class="table_fist_col">1. PERS</td><td class="table_fist_col">Personnel Capability</td>
-                <td><input type="range" min="1" max="7" value="4" id="input_e1" oninput="choiseA()"></td>
-                <td><snap id="e1_text"></snap></td>
-            </tr>
-            <tr>
-                <td class="table_fist_col">2. PREX</td><td class="table_fist_col">Personnel Experience</td>
-                <td><input type="range" min="1" max="7" value="4" id="input_e2" oninput="choiseA()"></td>
-                <td><snap id="e2_text"></snap></td>
-            </tr>
-            <tr>
-                <td colspan="4">Параметры продукта</td>
-            </tr>
-            <tr>
-                <td class="table_fist_col">3. RCPX</td><td class="table_fist_col">Product Reliability and Complexity</td>
-                <td><input type="range" min="1" max="7" value="4" id="input_e3" oninput="choiseA()"></td>
-                <td><snap id="e3_text"></snap></td>
-            </tr>
-            <tr>
-                <td class="table_fist_col">4. RUSE</td><td class="table_fist_col">Developed for Reusability</td>
-                <td><input type="range" min="1" max="7" value="4" id="input_e4" oninput="choiseA()"></td>
-                <td><snap id="e4_text"></snap></td>
-            </tr>
-            <td colspan="4">Параметры платформы</td>
-            </tr>
-            <tr>
-                <td class="table_fist_col">5. PDIF</td><td class="table_fist_col">Platform Difficulty</td>
-                <td><input type="range" min="1" max="7" value="4" id="input_e5" oninput="choiseA()"></td>
-                <td><snap id="e5_text"></snap></td>
-            </tr>
-            <td colspan="4">Параметры проекта</td>
-            </tr>
-            <tr>
-                <td class="table_fist_col">6. FCIL</td><td class="table_fist_col">Facilities</td>
-                <td><input type="range" min="1" max="7" value="4" id="input_e6" oninput="choiseA()"></td>
-                <td><snap id="e6_text"></snap></td>
-            </tr>
-            <tr>
-                <td class="table_fist_col">7. SCED</td><td class="table_fist_col">Required Development Schedule</td>
-                <td><input type="range" min="1" max="7" value="4" id="input_e7" oninput="choiseA()"></td>
-                <td><snap id="e7_text"></snap></td>
-            </tr>
+                </tr>
 
-        </table>
-    </form>
-    <!-- Table 2.7 -->
-    <form id="EAF_II_d">
-        <table class="table_dark">
-            <colgroup>
-                <col width="20%"/>
-                <col width="40%"/>
-                <col width="20%"/>
-                <col width="20%"/>
-            </colgroup>
-            <tr class="head">
-                <td rowspan="2" colspan="2">Множитель трудоёмкости, EMi</td>
-                <td colspan="2"> Рейтинг</td>
-            </tr>
-            <tr class="head">
-                <td>уровень</td>
-                <td>коэффициент</td>
-            </tr>
-            <tr class="head">
-                <td colspan="4">Параметры персонала</td>
-            </tr>
-            <tr>
-                <td class="table_fist_col">1. ACAP</td><td class="table_fist_col">Analyst Capability</td>
-                <td><input type="range" min="1" max="6" value="3" id="input_m1" oninput="choiseA()"></td>
-                <td><snap id="m1_text"></snap></td>
-            </tr>
-            <tr>
-                <td class="table_fist_col">2. AEXP</td><td class="table_fist_col">Applications Experience</td>
-                <td><input type="range" min="1" max="6" value="3" id="input_m2" oninput="choiseA()"></td>
-                <td><snap id="m2_text"></snap></td>
-            </tr>
-            <tr>
-                <td class="table_fist_col">3. PCAP</td><td class="table_fist_col">Programmer Capability</td>
-                <td><input type="range" min="1" max="6" value="3" id="input_m3" oninput="choiseA()"></td>
-                <td><snap id="m3_text"></snap></td>
-            </tr>
-            <tr>
-                <td class="table_fist_col">4. PCON</td><td class="table_fist_col">Personnel Continuity</td>
-                <td><input type="range" min="1" max="6" value="3" id="input_m4" oninput="choiseA()"></td>
-                <td><snap id="m4_text"></snap></td>
-            </tr>
-            <tr>
-                <td class="table_fist_col">5. PEXP</td><td class="table_fist_col">Platform Experience</td>
-                <td><input type="range" min="1" max="6" value="3" id="input_m5" oninput="choiseA()"></td>
-                <td><snap id="m5_text"></snap></td>
-            </tr>
-            <tr>
-                <td class="table_fist_col">6. LTEX</td><td class="table_fist_col">Language and Tool Experience</td>
-                <td><input type="range" min="1" max="6" value="3" id="input_m6" oninput="choiseA()"></td>
-                <td><snap id="m6_text"></snap></td>
-            </tr>
-            <tr>
-                <td colspan="4">Параметры продукта</td>
-            </tr>
-            <tr>
-                <td class="table_fist_col">7. RELY</td><td class="table_fist_col">Required Software Reliability</td>
-                <td><input type="range" min="1" max="6" value="3" id="input_m7" oninput="choiseA()"></td>
-                <td><snap id="m7_text"></snap></td>
-            </tr>
-            <tr>
-                <td class="table_fist_col">8. DATA</td><td class="table_fist_col">Database Size</td>
-                <td><input type="range" min="1" max="6" value="3" id="input_m8" oninput="choiseA()"></td>
-                <td ><snap id="m8_text"></snap></td>
-            </tr>
-            <tr>
-                <td class="table_fist_col">9. CPLX</td><td class="table_fist_col">Software Product Complexity</td>
-                <td><input type="range" min="1" max="6" value="3" id="input_m9" oninput="choiseA()"></td>
-                <td><snap id="m9_text"></snap></td>
-            </tr>
-            <tr>
-                <td class="table_fist_col">10. RUSE</td><td class="table_fist_col">Required Reusability</td>
-                <td><input type="range" min="1" max="6" value="3" id="input_m10" oninput="choiseA()"></td>
-                <td><snap id="m10_text"></snap></td>
-            </tr>
-            <tr>
-                <td class="table_fist_col">11. DOCU</td><td class="table_fist_col">Documentation Match to Life-Cycle Needs</td>
-                <td><input type="range" min="1" max="6" value="3" id="input_m11" oninput="choiseA()"></td>
-                <td><snap id="m11_text"></snap></td>
-            </tr>
-            <td colspan="4">Параметры платформы</td>
-            </tr>
-            <tr>
-                <td class="table_fist_col">12. TIME</td><td class="table_fist_col">Execution Time Constraint</td>
-                <td><input type="range" min="1" max="6" value="3" id="input_m12" oninput="choiseA()"></td>
-                <td><snap id="m12_text"></snap></td>
-            </tr>
-            <tr>
-                <td class="table_fist_col">13. STOR</td><td class="table_fist_col">Main Storage Constraint</td>
-                <td><input type="range" min="1" max="6" value="3" id="input_m13" oninput="choiseA()"></td>
-                <td><snap id="m13_text"></snap></td>
-            </tr>
-            <tr>
-                <td class="table_fist_col">14. PVOL</td><td class="table_fist_col">Platform Volatility</td>
-                <td><input type="range" min="1" max="6" value="3" id="input_m14" oninput="choiseA()"></td>
-                <td><snap id="m14_text"></snap></td>
-            </tr>
-            <td colspan="4">Параметры проекта</td>
-            </tr>
-            <tr>
-                <td class="table_fist_col">15. TOOL</td><td class="table_fist_col">Use of Software Tools</td>
-                <td><input type="range" min="1" max="6" value="3" id="input_m15" oninput="choiseA()"></td>
-                <td><snap id="m15_text"></snap></td>
-            </tr>
-            <tr>
-                <td class="table_fist_col">16. SITE</td><td class="table_fist_col">Multisite Development</td>
-                <td><input type="range" min="1" max="6" value="3" id="input_m16" oninput="choiseA()"></td>
-                <td><snap id="m16_text"></snap></td>
-            </tr>
-            <tr>
-                <td class="table_fist_col">17. SCED</td><td class="table_fist_col">Required Development Schedule</td>
-                <td><input type="range" min="1" max="6" value="3" id="input_m17" oninput="choiseA()"></td>
-                <td><snap id="m17_text"></snap></td>
-            </tr>
+                <tr>
+                    <td class="table_fist_col" colspan="4">
+                <span class="table_note">СММ (Capability Maturity Model) — пятиуровневая модель зрелости
+                    возможностей компании-разработчика ПО, предложенная SEI (Software Engineering Institute, США).</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="table_fist_col" colspan="4">
+                <span class="table_note">Ad hoc (лат. «для этого»). Решение, предназначенное для конкретной задачи
+                    или задачи, не обобщаемое и не предназначаемое для адаптации к другим целям.</span>
+                    </td>
+                </tr>
 
-        </table>
-    </form>
+            </table>
+        </form>
+
+        <!-- Table 2.6 -->
+        <p><h4>Множители трудоемкости (Effort Multipliers)</h4></p>
+        <p>Количество и значения множителей трудоёмкости отличаются для разных стадий оценки проекта.</p>
+        <p>Для cтадии предварительной оценки необходимо оценить уровень <b>семи</b> множителей трудоемкости,</p>
+        <p>для стадии детальной оценки - <b>семнадцати</b>.</p>
+        <form id="EAF_II_p">
+            <table class="table_dark">
+                <colgroup>
+                    <col width="20%"/>
+                    <col width="40%"/>
+                    <col width="20%"/>
+                    <col width="20%"/>
+                </colgroup>
+                <tr class="head">
+                    <td rowspan="2" colspan="2">Множитель трудоёмкости, EMi</td>
+                    <td colspan="2"> Рейтинг</td>
+                </tr>
+                <tr class="head">
+                    <td>уровень</td>
+                    <td>коэффициент</td>
+                </tr>
+                <tr class="head">
+                    <td colspan="4">Параметры персонала</td>
+                </tr>
+                <tr>
+                    <td class="table_fist_col">1. PERS</td><td class="table_fist_col">Personnel Capability</td>
+                    <td><input type="range" min="1" max="7" value="4" id="input_e1" oninput="choiseA()"></td>
+                    <td><snap id="e1_text"></snap></td>
+                </tr>
+                <tr>
+                    <td class="table_fist_col">2. PREX</td><td class="table_fist_col">Personnel Experience</td>
+                    <td><input type="range" min="1" max="7" value="4" id="input_e2" oninput="choiseA()"></td>
+                    <td><snap id="e2_text"></snap></td>
+                </tr>
+                <tr>
+                    <td colspan="4">Параметры продукта</td>
+                </tr>
+                <tr>
+                    <td class="table_fist_col">3. RCPX</td><td class="table_fist_col">Product Reliability and Complexity</td>
+                    <td><input type="range" min="1" max="7" value="4" id="input_e3" oninput="choiseA()"></td>
+                    <td><snap id="e3_text"></snap></td>
+                </tr>
+                <tr>
+                    <td class="table_fist_col">4. RUSE</td><td class="table_fist_col">Developed for Reusability</td>
+                    <td><input type="range" min="1" max="7" value="4" id="input_e4" oninput="choiseA()"></td>
+                    <td><snap id="e4_text"></snap></td>
+                </tr>
+                <td colspan="4">Параметры платформы</td>
+                </tr>
+                <tr>
+                    <td class="table_fist_col">5. PDIF</td><td class="table_fist_col">Platform Difficulty</td>
+                    <td><input type="range" min="1" max="7" value="4" id="input_e5" oninput="choiseA()"></td>
+                    <td><snap id="e5_text"></snap></td>
+                </tr>
+                <td colspan="4">Параметры проекта</td>
+                </tr>
+                <tr>
+                    <td class="table_fist_col">6. FCIL</td><td class="table_fist_col">Facilities</td>
+                    <td><input type="range" min="1" max="7" value="4" id="input_e6" oninput="choiseA()"></td>
+                    <td><snap id="e6_text"></snap></td>
+                </tr>
+                <tr>
+                    <td class="table_fist_col">7. SCED</td><td class="table_fist_col">Required Development Schedule</td>
+                    <td><input type="range" min="1" max="7" value="4" id="input_e7" oninput="choiseA()"></td>
+                    <td><snap id="e7_text"></snap></td>
+                </tr>
+
+            </table>
+        </form>
+        <!-- Table 2.7 -->
+        <form id="EAF_II_d">
+            <table class="table_dark">
+                <colgroup>
+                    <col width="20%"/>
+                    <col width="40%"/>
+                    <col width="20%"/>
+                    <col width="20%"/>
+                </colgroup>
+                <tr class="head">
+                    <td rowspan="2" colspan="2">Множитель трудоёмкости, EMi</td>
+                    <td colspan="2"> Рейтинг</td>
+                </tr>
+                <tr class="head">
+                    <td>уровень</td>
+                    <td>коэффициент</td>
+                </tr>
+                <tr class="head">
+                    <td colspan="4">Параметры персонала</td>
+                </tr>
+                <tr>
+                    <td class="table_fist_col">1. ACAP</td><td class="table_fist_col">Analyst Capability</td>
+                    <td><input type="range" min="1" max="6" value="3" id="input_m1" oninput="choiseA()"></td>
+                    <td><snap id="m1_text"></snap></td>
+                </tr>
+                <tr>
+                    <td class="table_fist_col">2. AEXP</td><td class="table_fist_col">Applications Experience</td>
+                    <td><input type="range" min="1" max="6" value="3" id="input_m2" oninput="choiseA()"></td>
+                    <td><snap id="m2_text"></snap></td>
+                </tr>
+                <tr>
+                    <td class="table_fist_col">3. PCAP</td><td class="table_fist_col">Programmer Capability</td>
+                    <td><input type="range" min="1" max="6" value="3" id="input_m3" oninput="choiseA()"></td>
+                    <td><snap id="m3_text"></snap></td>
+                </tr>
+                <tr>
+                    <td class="table_fist_col">4. PCON</td><td class="table_fist_col">Personnel Continuity</td>
+                    <td><input type="range" min="1" max="6" value="3" id="input_m4" oninput="choiseA()"></td>
+                    <td><snap id="m4_text"></snap></td>
+                </tr>
+                <tr>
+                    <td class="table_fist_col">5. PEXP</td><td class="table_fist_col">Platform Experience</td>
+                    <td><input type="range" min="1" max="6" value="3" id="input_m5" oninput="choiseA()"></td>
+                    <td><snap id="m5_text"></snap></td>
+                </tr>
+                <tr>
+                    <td class="table_fist_col">6. LTEX</td><td class="table_fist_col">Language and Tool Experience</td>
+                    <td><input type="range" min="1" max="6" value="3" id="input_m6" oninput="choiseA()"></td>
+                    <td><snap id="m6_text"></snap></td>
+                </tr>
+                <tr>
+                    <td colspan="4">Параметры продукта</td>
+                </tr>
+                <tr>
+                    <td class="table_fist_col">7. RELY</td><td class="table_fist_col">Required Software Reliability</td>
+                    <td><input type="range" min="1" max="6" value="3" id="input_m7" oninput="choiseA()"></td>
+                    <td><snap id="m7_text"></snap></td>
+                </tr>
+                <tr>
+                    <td class="table_fist_col">8. DATA</td><td class="table_fist_col">Database Size</td>
+                    <td><input type="range" min="1" max="6" value="3" id="input_m8" oninput="choiseA()"></td>
+                    <td ><snap id="m8_text"></snap></td>
+                </tr>
+                <tr>
+                    <td class="table_fist_col">9. CPLX</td><td class="table_fist_col">Software Product Complexity</td>
+                    <td><input type="range" min="1" max="6" value="3" id="input_m9" oninput="choiseA()"></td>
+                    <td><snap id="m9_text"></snap></td>
+                </tr>
+                <tr>
+                    <td class="table_fist_col">10. RUSE</td><td class="table_fist_col">Required Reusability</td>
+                    <td><input type="range" min="1" max="6" value="3" id="input_m10" oninput="choiseA()"></td>
+                    <td><snap id="m10_text"></snap></td>
+                </tr>
+                <tr>
+                    <td class="table_fist_col">11. DOCU</td><td class="table_fist_col">Documentation Match to Life-Cycle Needs</td>
+                    <td><input type="range" min="1" max="6" value="3" id="input_m11" oninput="choiseA()"></td>
+                    <td><snap id="m11_text"></snap></td>
+                </tr>
+                <td colspan="4">Параметры платформы</td>
+                </tr>
+                <tr>
+                    <td class="table_fist_col">12. TIME</td><td class="table_fist_col">Execution Time Constraint</td>
+                    <td><input type="range" min="1" max="6" value="3" id="input_m12" oninput="choiseA()"></td>
+                    <td><snap id="m12_text"></snap></td>
+                </tr>
+                <tr>
+                    <td class="table_fist_col">13. STOR</td><td class="table_fist_col">Main Storage Constraint</td>
+                    <td><input type="range" min="1" max="6" value="3" id="input_m13" oninput="choiseA()"></td>
+                    <td><snap id="m13_text"></snap></td>
+                </tr>
+                <tr>
+                    <td class="table_fist_col">14. PVOL</td><td class="table_fist_col">Platform Volatility</td>
+                    <td><input type="range" min="1" max="6" value="3" id="input_m14" oninput="choiseA()"></td>
+                    <td><snap id="m14_text"></snap></td>
+                </tr>
+                <td colspan="4">Параметры проекта</td>
+                </tr>
+                <tr>
+                    <td class="table_fist_col">15. TOOL</td><td class="table_fist_col">Use of Software Tools</td>
+                    <td><input type="range" min="1" max="6" value="3" id="input_m15" oninput="choiseA()"></td>
+                    <td><snap id="m15_text"></snap></td>
+                </tr>
+                <tr>
+                    <td class="table_fist_col">16. SITE</td><td class="table_fist_col">Multisite Development</td>
+                    <td><input type="range" min="1" max="6" value="3" id="input_m16" oninput="choiseA()"></td>
+                    <td><snap id="m16_text"></snap></td>
+                </tr>
+                <tr>
+                    <td class="table_fist_col">17. SCED</td><td class="table_fist_col">Required Development Schedule</td>
+                    <td><input type="range" min="1" max="6" value="3" id="input_m17" oninput="choiseA()"></td>
+                    <td><snap id="m17_text"></snap></td>
+                </tr>
+
+            </table>
+        </form>
+    </div>
 </div>
 
 <!-- Scripts -->

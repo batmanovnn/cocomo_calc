@@ -2,72 +2,95 @@ html, body {
     width: 100%;
     height: 100%;
     font-family: sans-serif;
-    background-color: grey;
+    color: white;
+    background-color: #1b2631;
     font-size: 1em;
+}
+h3{
+    color: #EDB749;
+}
+p {
+    margin: 0;
+    text-indent: 3ch;
+}
+a{
+    color: #f1c40f;
+}
+
+#empty{
+    padding: 30px;
 }
 
 header {
     position: fixed;
-    justify-content: center;
-    align-items: center;
+    top: 0;
+    /*justify-content: center;*/
+    /*align-items: center;*/
     width: 100%;
     height: 60px;
-    font-size: 1em;
+    background-color: #1b2631;
     border-bottom: 1px solid black;
-
 }
 
-/* Header menu*/
-.dropbtn {
+/* Buttons on header */
+
+.button-container a {
+    text-decoration: none;
+    outline: none;
+    display: inline-block;
+    margin: 10px 20px;
+    padding: 10px 30px;
+    position: relative;
+    border: 2px solid #f1c40f;
+    color: #f1c40f;
+    font-family: 'Montserrat', sans-serif;
+    transition: .4s;
+}
+.button-container a:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    border: 2px solid rgba(0,0,0,0);
+    transition: .4s;
+}
+.button-container a:hover:after {
+    border-color: #f1c40f;
+    width: calc(100% - 10px);
+    height: calc(100% + 10px);
+}
+
+.info_btn{
+    position: fixed;
+    right: 5%;
+    text-decoration: none;
+    outline: none;
+    margin: 10px 20px;
+    padding: 10px 30px;
+    border: 2px solid #f1c40f;
+    color: #f1c40f;
+    font-family: 'Montserrat', sans-serif;
+    -webkit-transition: all .4s;
+    -moz-transition: .4s;
+    -o-transition: .4s;
+    transition: .4s;
+}
+
+/* Table with result */
+#info_block {
+    visibility: hidden;
+    position: fixed;
+    right: 0;
+    top: 80px;
+    font-size: 1em;
     background-color: #3498DB;
     color: white;
-    padding: 16px;
-    font-size: 1em;
-    border: none;
-    cursor: pointer;
-    width: 100%;
 }
-
-/* Dropdown button on hover & focus */
-.dropbtn:hover, .dropbtn:focus {
-    background-color: #2980B9;
-}
-
-/* The container <div> - needed to position the dropdown content */
-.dropdown {
-    position: relative;
-    display: inline-block;
-    width: 100%;
-}
-
-/* Dropdown Content (Hidden by Default) */
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f1f1f1;
-    /*min-width: 160px;*/
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-    width: 100%;
-}
-
-/* Links inside the dropdown */
-.dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-}
-
-/* Change color of dropdown links on hover */
-.dropdown-content a:hover {
-    background-color: #ddd;
-    width: 100%;
-}
-
-/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
-.show {display:block;}
-
 
 /* Table with result */
 .result {
@@ -80,6 +103,11 @@ header {
 }
 .result:hover, .dropbtn:focus {
     background-color: #2980B9;
+}
+
+.content{
+    width: 60%;
+    padding: 30px 10%;
 }
 
 /* Table with form input */
@@ -95,7 +123,7 @@ header {
 
 /* Styles for tables */
 .table_dark {
-    width: 55%;
+    width: 80%;
     font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
     font-size: 0.9em;
     text-align: center;
@@ -132,6 +160,7 @@ header {
 .table_dark tr:hover td {
     text-decoration: underline;
 }
+
 .head {
     text-align: center;
     font-weight: bolder;
