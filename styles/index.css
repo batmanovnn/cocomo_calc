@@ -12,6 +12,7 @@ h3{
 p {
     margin: 0;
     text-indent: 3ch;
+    text-align: justify;
 }
 a{
     color: #f1c40f;
@@ -110,6 +111,14 @@ header {
     padding: 30px 10%;
 }
 
+#org, #sem{
+    display: none;
+}
+
+#emb{
+    display: inline;
+}
+
 /* Table with form input */
 
 /*Visability tables*/
@@ -124,7 +133,7 @@ header {
 /* Styles for tables */
 .table_dark {
     width: 80%;
-    font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
     font-size: 0.9em;
     text-align: center;
     border-collapse: collapse;

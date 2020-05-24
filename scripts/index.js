@@ -25,10 +25,20 @@ let type = 2, TM = 0, EAF_int = 1;  // Global variables
 
 function choiseType() {
     type = Number(document.getElementById('input_type').value);
-    if (type === 1) {document.getElementById('type_text').innerHTML = "Распространенный";
+    if (type === 1)
+        {document.getElementById('type_text').innerHTML = "Распространенный";
+        document.getElementById('org').style.display = "inline";
+        document.getElementById('emb').style.display = "none";
+        document.getElementById('sem').style.display = "none";
     }else if (type === 2) {document.getElementById('type_text').innerHTML = "Полунезависимый";
+        document.getElementById('org').style.display = "none";
+        document.getElementById('emb').style.display = "inline";
+        document.getElementById('sem').style.display = "none";
     }else if (type === 3) {document.getElementById('type_text').innerHTML = "Встроенный";
-    }else {console.log("problem input_type!")}
+        document.getElementById('org').style.display = "none";
+        document.getElementById('emb').style.display = "none";
+        document.getElementById('sem').style.display = "inline";
+    }
 
     showBase();     //Updating calculate
     showInter();    //Updating calculate
