@@ -4,7 +4,7 @@ function info_btn_click(){
     let valueVis = window.getComputedStyle(element).visibility;
     console.log(valueVis);
     if(valueVis == "visible"){document.getElementById('info_block').style.visibility = "hidden"}
-    else {document.getElementById('info_block').style.visibility = "visible"}
+        else {document.getElementById('info_block').style.visibility = "visible"}
 }
 
 // Global variables
@@ -14,8 +14,8 @@ let Size;
 function getSize() {
     let buff = parseInt(document.getElementById('input_size').value);
     if (buff > 100){Size = 100}
-    else if (buff < 2) {Size = 2}
-    else{Size = buff}
+        else if (buff < 2) {Size = 2}
+                else{Size = buff}
     choiseType();
     choiseA();
 }
@@ -30,15 +30,15 @@ function choiseType() {
         document.getElementById('org').style.display = "inline";
         document.getElementById('emb').style.display = "none";
         document.getElementById('sem').style.display = "none";
-    }else if (type === 2) {document.getElementById('type_text').innerHTML = "Полунезависимый";
-        document.getElementById('org').style.display = "none";
-        document.getElementById('emb').style.display = "inline";
-        document.getElementById('sem').style.display = "none";
-    }else if (type === 3) {document.getElementById('type_text').innerHTML = "Встроенный";
-        document.getElementById('org').style.display = "none";
-        document.getElementById('emb').style.display = "none";
-        document.getElementById('sem').style.display = "inline";
-    }
+        }else if (type === 2) {document.getElementById('type_text').innerHTML = "Полунезависимый";
+            document.getElementById('org').style.display = "none";
+            document.getElementById('emb').style.display = "inline";
+            document.getElementById('sem').style.display = "none";
+                }else if (type === 3) {document.getElementById('type_text').innerHTML = "Встроенный";
+                    document.getElementById('org').style.display = "none";
+                    document.getElementById('emb').style.display = "none";
+                    document.getElementById('sem').style.display = "inline";
+                }
 
     showBase();     //Updating calculate
     showInter();    //Updating calculate
@@ -51,17 +51,17 @@ function showBase() {
         b = 1.05;
         c = 2.5;
         d = 0.38;
-    }else if (type === 2) {
-        a = 3;
-        b = 1.12;
-        c = 2.5;
-        d = 0.35;
-    }else if (type === 3) {
-        a = 3.6;
-        b = 1.2;
-        c = 2.5;
-        d = 0.32;
-    }console.log("a=" + a + ", b=" + b + ", c=" + c + ", d=" + d)
+        }else if (type === 2) {
+            a = 3;
+            b = 1.12;
+            c = 2.5;
+            d = 0.35;
+            }else if (type === 3) {
+                a = 3.6;
+                b = 1.2;
+                c = 2.5;
+                d = 0.32;
+            }console.log("a=" + a + ", b=" + b + ", c=" + c + ", d=" + d)
 
     //calcPM_base
     let PM_base = a * (Size ** b);
@@ -77,17 +77,17 @@ function showInter() {
         b = 1.05;
         c = 2.5;
         d = 0.38;
-    }else if (type === 2) {
-        a = 3;
-        b = 1.12;
-        c = 2.5;
-        d = 0.35;
-    }else if (type === 3) {
-        a = 2.8;
-        b = 1.2;
-        c = 2.5;
-        d = 0.32;
-    }
+        }else if (type === 2) {
+            a = 3;
+            b = 1.12;
+            c = 2.5;
+            d = 0.35;
+            }else if (type === 3) {
+                a = 2.8;
+                b = 1.2;
+                c = 2.5;
+                d = 0.32;
+            }
 
     //calcPM_int
     let PM_int = EAF_int * (a * (Size ** b));
@@ -155,13 +155,13 @@ function choiseA() {
         document.getElementById('EAF_II_d').style.display = "none";
         A = 2.94;
         changeEAF_II_p();
-    }else if (typeA === 2) {
-        document.getElementById('A_text').innerHTML = "Детальная оценка";
-        document.getElementById('EAF_II_p').style.display = "none";
-        document.getElementById('EAF_II_d').style.display = "inline";
-        A = 2.45;
-        changeEAF_II_d();
-    }
+        }else if (typeA === 2) {
+            document.getElementById('A_text').innerHTML = "Детальная оценка";
+            document.getElementById('EAF_II_p').style.display = "none";
+            document.getElementById('EAF_II_d').style.display = "inline";
+            A = 2.45;
+            changeEAF_II_d();
+        }
     calcE();
     showII();   //Updating calculate
 }
